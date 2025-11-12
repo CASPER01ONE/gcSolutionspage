@@ -1,0 +1,20 @@
+# Dependencies
+**/node_modules/
+
+# Builds
+**/dist/
+**/dist-ssr/
+
+# Environment files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS and editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+**/*.log

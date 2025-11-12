@@ -1,0 +1,248 @@
+@import "./src/styles.scss";
+@use 'sass:color';
+
+// Variables globales
+$primary-color: #007bff; // Azul principal
+$secondary-color: #6c757d; // Gris secundario
+$background-light: #f8f9fa; // Fondo claro
+$font-family-base: 'Roboto', sans-serif; // Fuente principal
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+$shadow-soft: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Resets y base styles
+body {
+  font-family: $font-family-base;
+  background-color: $background-light;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Estilos para componente Home (carrusel y banner)
+.section {
+  padding: $spacing-lg 0;
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-md;
+    color: $primary-color;
+    font-size: 2.5rem; // Mayor tamaño para banner-like
+    font-weight: bold;
+    list-style: none; // Elimina cualquier estilo de lista si aparece
+  }
+}
+
+// Carrusel
+.hero-carousel {
+  height: 400px; // Altura fija para visibilidad
+  margin-top: 70px; // Espacio para encabezado si hay navbar
+  overflow: hidden; // Evita desbordes
+  position: relative;
+
+  .hero-slide {
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.3));
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    height: 100%; // Asegura que ocupe todo el slide
+    width: 100%;
+    opacity: 1; // Fuerza visibilidad de componentes internos
+    transition: opacity 0.5s ease; // Suaviza cambios para evitar parpadeos
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-md;
+      z-index: 2; // Asegura que texto esté por encima del fondo
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: $spacing-md;
+      z-index: 2;
+    }
+
+    .btn-primary {
+      z-index: 2;
+      padding: $spacing-sm $spacing-md;
+      font-size: 1.2rem;
+    }
+  }
+
+  // Estilos para navegación y paginación de Swiper
+  .swiper-pagination {
+    bottom: 10px;
+    .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.8;
+      &-active {
+        background: $primary-color;
+      }
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    &::after {
+      font-size: 2rem;
+    }
+  }
+}
+
+// Secciones
+.section {
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+}
+
+// Productos (adaptado para GC Solutions: tarjetas de servicios/seguros)
+.product-card {
+  .image-placeholder {
+    height: 200px;
+    background: linear-gradient(rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.2));
+    border-radius: 10px;
+    background-size: cover;
+    margin-bottom: 15px;
+  }
+}
+
+// Estilos para componente Services
+.service-card {
+  border: none;
+  box-shadow: $shadow-soft;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-placeholder {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba($primary-color, 0.5), rgba($primary-color, 0.2)), url('/vite.svg');
+  }
+
+  .card-body {
+    padding: $spacing-md;
+
+    .card-title {
+      color: $primary-color;
+      font-size: 1.25rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    .btn-primary {
+      width: 100%;
+      margin-top: $spacing-sm;
+    }
+  }
+}
+
+// Estilos para componente Register (y similar para Login)
+.register-container {
+  background-color: $background-light;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+}
+
+.register-card {
+  box-shadow: $shadow-soft;
+  border-radius: 8px;
+  background-color: white;
+
+  .card-body {
+    padding: $spacing-lg;
+
+    .login-logo {
+      max-width: 150px;
+      margin-bottom: $spacing-md;
+    }
+
+    .alert {
+      margin-bottom: $spacing-md;
+    }
+
+    .form-group {
+      margin-bottom: $spacing-md;
+    }
+
+    .register-button {
+      background-color: $primary-color;
+      border: none;
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: -10%);
+      }
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: $spacing-md;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Estilos adicionales para otros componentes (ej. Quotes)
+.quotes-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $spacing-md;
+  background-color: white;
+  box-shadow: $shadow-soft;
+  border-radius: 8px;
+}
+
+// Media queries para responsividad
+@media (max-width: 576px) {
+  .hero-carousel {
+    height: 40vh; // Ajusta altura en mobile
+  }
+
+  .hero-slide {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .register-card {
+    padding: $spacing-md;
+  }
+
+  .service-card {
+    margin-bottom: $spacing-md;
+  }
+
+  .social-links a {
+  color: white;
+  transition: color 0.3s;
+}
+.social-links a:hover {
+  color: var(-apple-system); // O el color que quieras
+}
+}
