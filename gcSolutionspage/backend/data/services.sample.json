@@ -2,16 +2,17 @@
   {
     "name": "Seguro Patrimonial",
     "description": "Protección integral de tu patrimonio.",
-    "price": 1200
+    "desde": 1500
+  
   },
   {
     "name": "Gastos Médicos",
     "description": "Cobertura amplia de gastos médicos.",
-    "price": 900
+    "desde": 2500
   },
   {
     "name": "Beca Educativa",
     "description": "Plan de ahorro y protección educativa.",
-    "price": 700
+    "desde": 2000
   }
 ]
