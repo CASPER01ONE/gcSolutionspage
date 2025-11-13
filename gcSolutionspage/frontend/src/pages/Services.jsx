@@ -17,8 +17,19 @@ function Services() {
         setUsingSample(source === 'sample');
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Error al cargar servicios:', err);
+      .catch(async () => {
+        try {
+          const resp = await fetch(import.meta.env.BASE_URL + 'services.sample.json');
+          if (resp.ok) {
+            const sample = await resp.json();
+            setServices(sample);
+            setUsingSample(true);
+            setLoading(false);
+            return;
+          }
+        } catch (e) {
+          console.error(e);
+        }
         setError('No se pudieron cargar los servicios.');
         setLoading(false);
       });
